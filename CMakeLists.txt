@@ -36,7 +36,7 @@ if (BUILD_FOR_PYTHON)
     if(APPLE AND CMAKE_HOST_SYSTEM_PROCESSOR STREQUAL "arm64")
         # Apple Silicon optimizations
         target_compile_options(SymSpellCppPy PRIVATE
-                $<$<CONFIG:Release>:-O3 -DNDEBUG -mcpu=apple-m1 -fvisibility=hidden
+                $<$<CONFIG:Release>:-O3 -DNDEBUG -march=armv8.4-a -fvisibility=hidden
                 -flto -ffat-lto-objects>)
     else()
         # Standard x86_64 optimizations

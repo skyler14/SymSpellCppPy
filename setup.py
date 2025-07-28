@@ -40,7 +40,7 @@ class CMakeBuild(build_ext):
         else:
             if cmake_version < '3.18.0':
                 raise RuntimeError("CMake >= 3.18.0 is required for Apple Silicon support. "
-                                 "Please update CMake: brew install cmake")
+                                 "Please update CMake by visiting https://cmake.org/download/ or using your system's package manager.")
 
         for ext in self.extensions:
             self.build_extension(ext)
@@ -82,7 +82,7 @@ class CMakeBuild(build_ext):
         
         # Add Apple Silicon optimization flags
         if platform.system() == "Darwin" and platform.machine() == "arm64":
-            env['CXXFLAGS'] = '{} -mcpu=apple-m1'.format(env.get('CXXFLAGS', ''))
+            env['CXXFLAGS'] = '{} -mcpu=apple-a14'.format(env.get('CXXFLAGS', ''))
             
         if not os.path.exists(self.build_temp):
             os.makedirs(self.build_temp)
