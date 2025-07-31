@@ -273,6 +273,17 @@ namespace symspellcpppy
         /// <returns>A List of SuggestItem object representing suggested correct spellings for the input string.</returns>
         std::vector<SuggestItem> LookupCompound(const xstring &input, int editDistanceMax, bool transferCasing);
 
+        /// <summary>Find suggested spelling candidates for a multi-word input string (supports word splitting/merging).</summary>
+        /// <param name="input">The string being spell checked.</param>
+        /// <returns>A List of SuggestItem object representing suggested correct spelling candidates for the input string.</returns>
+        std::vector<SuggestItem> LookupCompoundCandidates(const xstring &input);
+
+        /// <summary>Find suggested spelling candidates for a multi-word input string (supports word splitting/merging).</summary>
+        /// <param name="input">The string being spell checked.</param>
+        /// <param name="maxEditDistance">The maximum edit distance between input and suggested words.</param>
+        /// <returns>A List of SuggestItem object representing suggested correct spelling candidates for the input string.</returns>
+        std::vector<SuggestItem> LookupCompoundCandidates(const xstring &input, int editDistanceMax);
+
         // ######
 
         // WordSegmentation divides a string into words by inserting missing spaces at the appropriate positions
